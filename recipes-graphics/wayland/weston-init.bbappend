@@ -54,9 +54,9 @@ do_install:append() {
 
     install -d ${D}${systemd_system_unitdir} ${D}${sbindir}
 
-    install -d ${D}/lib/systemd/system/
-    if [ -e ${D}/lib/systemd/system/weston.service ]; then
-        rm ${D}/lib/systemd/system/weston.service ${D}/lib/systemd/system/weston.socket
+    install -d ${D}/${systemd_system_unitdir}
+    if [ -e ${D}${systemd_system_unitdir}/weston.service ]; then
+        rm ${D}${systemd_system_unitdir}/weston.service ${D}${systemd_system_unitdir}/weston.socket
         install -D -p -m0644 ${WORKDIR}/weston-graphical-session.service ${D}${systemd_system_unitdir}/weston-graphical-session.service
         sed -i -e s:/etc:${sysconfdir}:g \
             -e s:/usr/bin:${bindir}:g \
